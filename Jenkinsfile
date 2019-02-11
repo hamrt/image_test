@@ -8,12 +8,12 @@ pipeline {
     }
     stage('build image') {
       steps {
-        build 'docker.build("Dockerfile")'
+        app = docker.build("Dockerfile")'
       }
     }
     stage('test') {
       steps {
-        build 'app.inside { sh \'echo "Tests passed"\'}'
+        app.inside { sh \'echo "Tests passed"\'}'
       }
     }
   }
