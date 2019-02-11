@@ -1,23 +1,24 @@
-pipeline {
-  def app
-  agent any
-  stages {
-    stage('clone repo') {
-      steps {
+node {
+    def app
+
+    stage('Clone repository') {
+        /* Let's make sure we have the repository cloned to our workspace */
         git 'https://github.com/hamrt/image_test.git'
-      }
     }
-    stage('build image') {
-      steps {
-        app = docker.build("Dockerfile")
-      }
+
+    stage('Build image') {
+        /* This builds the actual image; synonymous to
+         * docker build on the command line */
+
+        app = docker.build("test")
     }
-    stage('test') {
-      steps {
+
+    stage('Test image') {
+        /* Ideally, we would run a test framework against our image.
+         * For this example, we're using a Volkswagen-type approach ;-) */
+
         app.inside {
             sh 'echo "Tests passed"'
         }
-      }
     }
-  }  
 }
