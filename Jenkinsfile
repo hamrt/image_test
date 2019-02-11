@@ -13,7 +13,9 @@ pipeline {
     }
     stage('test') {
       steps {
-        app.inside { sh \'echo "Tests passed"\'}'
+        app.inside {
+            sh 'echo "Tests passed"'
+        }
       }
     }
   }
