@@ -1,6 +1,6 @@
 FROM nginx:1.15.8-alpine
 
-LABEL maintainer="Ronald"
+LABEL maintainer="Ronald based on docker repo"
 
 ENV NGINX_VERSION 1.15.8
 
